@@ -89,22 +89,24 @@ function deleteData() {
         $("#display").html("delete fail:" + JSON.stringify(error));
         })
 }
-    function updateData() {
-      UTdata.fetch()
+function updateData() {
+        UTdata.fetch()
         .then(function(results){
-        return results.delete();
+            let value = parseInt($("#update").val());
+            results.set(key, value);
+            return results.update();
         })
         .then(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-success");
-        $("#display").html("delete success");
+            $("#display").removeClass();
+            $("#display").addClass("bg-success");
+            $("#display").html("update success");
         })
         .catch(function(error){
-        $("#display").removeClass();
-        $("#display").addClass("bg-warning");
-        $("#display").html("delete fail:" + JSON.stringify(error));
+            $("#display").removeClass();
+            $("#display").addClass("bg-warning");
+            $("#display").html("update fail:" + JSON.stringify(error));
         })
-    }
+}
   </script>
 </head>
 
